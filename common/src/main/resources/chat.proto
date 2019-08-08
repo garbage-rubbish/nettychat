@@ -1,0 +1,55 @@
+syntax = "proto2";
+
+option java_package = "com.hkd.common.proto";
+option java_outer_classname = "ChatProtocol";
+
+message ChatProto {
+    enum MsType {
+        CAHT = 0;
+        FILE = 1;
+        HEARTBEATA=2;
+        LOGIN=3;
+
+    }
+    optional MsType type = 1;
+
+    oneof body {
+        LoginMsg loginMsg = 2;
+        HeartbeatMsg hbMsg = 3;
+        ChatMsg chatMsg = 4;
+        FileMsg fileMsg = 5;
+    }
+
+
+}
+message LoginMsg {
+    optional string reqId = 4;
+    optional string username = 1;
+    optional string password = 2;
+    optional string timestamp = 3;
+
+}
+message HeartbeatMsg {
+    optional string reqId = 4;
+    optional string timestamp = 3;
+    optional string body = 1;
+}
+message ChatMsg {
+    optional int32 reqId = 2;
+    optional string timestamp = 3;
+    optional string body = 1;
+    optional string from=4;
+    optional string to=5;
+
+}
+
+message FileMsg {
+    optional int32 reqId = 2;
+    optional string timestamp = 3;
+    optional bytes body = 1;
+    optional string filename=4;
+    optional string from=5;
+    optional string to=6;
+
+
+}
