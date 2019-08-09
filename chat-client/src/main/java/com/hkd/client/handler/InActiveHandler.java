@@ -8,13 +8,14 @@ import lombok.extern.slf4j.Slf4j;
 public class InActiveHandler extends ChannelInboundHandlerAdapter {
 
     private ChatClient chatClient;
-    InActiveHandler(ChatClient chatClient){
-        this.chatClient=chatClient;
+
+    InActiveHandler(ChatClient chatClient) {
+        this.chatClient = chatClient;
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-      log.warn("disconnect.. try reconnect");
+        log.warn("disconnect.. try reconnect");
         chatClient.connect(new ReConnectListener(chatClient));
 
     }
