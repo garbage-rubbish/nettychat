@@ -7,14 +7,19 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class ChatClientHandler extends SimpleChannelInboundHandler<ChatProtocol.ChatProto> {
+
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -25,12 +30,8 @@ public class ChatClientHandler extends SimpleChannelInboundHandler<ChatProtocol.
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        ctx.connect(new InetSocketAddress("localhost",2222));
         super.channelInactive(ctx);
-    }
-
-    @Override
-    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-        super.userEventTriggered(ctx, evt);
     }
 
     @Override

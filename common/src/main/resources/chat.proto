@@ -34,6 +34,9 @@ message HeartbeatMsg {
     optional string timestamp = 3;
     optional string body = 1;
 }
+message HeartbeanRespMsg{
+    optional string reqId=1;
+}
 message ChatMsg {
     optional int32 reqId = 2;
     optional string timestamp = 3;
@@ -42,7 +45,6 @@ message ChatMsg {
     optional string to=5;
 
 }
-
 message FileMsg {
     optional int32 reqId = 2;
     optional string timestamp = 3;

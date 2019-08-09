@@ -1,14 +1,9 @@
 package com.hkd.server.init;
 
-import com.hkd.common.codec.decoder.FileMessageDecoder;
-import com.hkd.common.codec.encoder.FileMessageEncoder;
 import com.hkd.common.proto.ChatProtocol;
-import com.hkd.server.handler.ChatFileHandler;
 import com.hkd.server.handler.ChatHandler;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;

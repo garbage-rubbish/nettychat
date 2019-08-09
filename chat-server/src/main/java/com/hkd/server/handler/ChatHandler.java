@@ -1,13 +1,10 @@
 package com.hkd.server.handler;
 
-import com.hkd.common.proto.ChatFileProtocol;
 import com.hkd.common.proto.ChatProtocol;
 import io.netty.channel.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.nio.channels.FileChannel;
-import java.nio.file.Paths;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
