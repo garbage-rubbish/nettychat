@@ -21,9 +21,6 @@ public class ChatServer {
     }
 
 
-    private ChatServer(){
-
-    }
 
     public void start(){
         EventLoopGroup boss=new NioEventLoopGroup();
@@ -44,7 +41,8 @@ public class ChatServer {
 
             sync.channel().closeFuture().sync();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.warn("Interrupted!",e);
+            Thread.currentThread().interrupt();
         }finally {
             boss.shutdownGracefully();
             worker.shutdownGracefully();

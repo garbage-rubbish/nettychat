@@ -29,12 +29,6 @@ public class ChatClientHandler extends SimpleChannelInboundHandler<ChatProtocol.
     }
 
     @Override
-    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        ctx.connect(new InetSocketAddress("localhost",2222));
-        super.channelInactive(ctx);
-    }
-
-    @Override
     protected void channelRead0(ChannelHandlerContext ctx, ChatProtocol.ChatProto msg) throws IOException {
         if(msg.getType()== ChatProtocol.ChatProto.MsType.CAHT){
             System.out.println("from "+msg.getChatMsg().getFrom()+":"+msg.getChatMsg().getBody());

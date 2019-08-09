@@ -2,6 +2,7 @@ package com.hkd.server.init;
 
 import com.hkd.common.proto.ChatProtocol;
 import com.hkd.server.handler.ChatHandler;
+import com.hkd.server.handler.HeartbeatHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
@@ -21,7 +22,8 @@ public class ChatServerHandlerInitializer extends ChannelInitializer<SocketChann
         ch.pipeline().addLast(new ProtobufDecoder(ChatProtocol.ChatProto.getDefaultInstance()));
         ch.pipeline().addLast(new ProtobufVarint32LengthFieldPrepender());
         ch.pipeline().addLast(new ProtobufEncoder());
-        ch.pipeline().addLast(new ChatHandler());
+        ch.pipeline().addLast(new HeartbeatHandler());
+      //  ch.pipeline().addLast(new ChatHandler());
 
     }
 }
