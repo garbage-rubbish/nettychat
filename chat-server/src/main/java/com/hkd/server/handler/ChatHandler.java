@@ -13,7 +13,7 @@ public class ChatHandler extends ChannelInboundHandlerAdapter {
 
     private Logger logger= LoggerFactory.getLogger(ChatHandler.class);
 
-    public static ConcurrentMap<String, Channel> SESSION=new ConcurrentHashMap<>(8);
+    public static final ConcurrentMap<String, Channel> SESSION=new ConcurrentHashMap<>(8);
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {

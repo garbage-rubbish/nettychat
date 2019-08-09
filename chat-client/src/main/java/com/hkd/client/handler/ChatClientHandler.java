@@ -23,7 +23,6 @@ public class ChatClientHandler extends SimpleChannelInboundHandler<ChatProtocol.
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        //super.channelActive(ctx);
         ChatProtocol.ChatProto zhangsan = ChatProtocol.ChatProto.newBuilder().setType(ChatProtocol.ChatProto.MsType.LOGIN).setLoginMsg(ChatProtocol.LoginMsg.newBuilder().setUsername(ChatClient.username).build()).build();
         ctx.writeAndFlush(zhangsan);
     }
